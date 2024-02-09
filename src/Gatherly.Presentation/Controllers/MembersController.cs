@@ -8,10 +8,13 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Gatherly.Application.Members.Login;
 using Microsoft.AspNetCore.Authorization;
+using Gatherly.Infrastructure.Authentication;
+using Gatherly.Domain.Enums;
 
 namespace Gatherly.Presentation.Controllers;
 
 [Route("api/members")]
+//[Authorize]
 public sealed class MembersController : ApiController
 {
     public MembersController(ISender sender)
@@ -19,7 +22,7 @@ public sealed class MembersController : ApiController
     {
     }
 
-    [Authorize]
+    //[HasPermission(Permission.ReadMember)]
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetMemberById(Guid id, CancellationToken cancellationToken)
     {

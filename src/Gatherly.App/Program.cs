@@ -1,6 +1,7 @@
 using FluentValidation;
 using Gatherly.App.OptionsSetup;
 using Gatherly.Application.Behaviors;
+using Gatherly.Domain.Enums;
 using Gatherly.Domain.Repositories;
 using Gatherly.Infrastructure.BackgroundJobs;
 using Gatherly.Infrastructure.Idempotence;
@@ -90,6 +91,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.ConfigureOptions<JwtOptionsSetup>();
 builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer();
